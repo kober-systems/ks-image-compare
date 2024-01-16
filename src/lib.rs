@@ -5,14 +5,17 @@ use image::ImageBuffer;
 use image::Rgba;
 
 fn compare_images(original: DynamicImage, compared: DynamicImage) -> DynamicImage {
-    if original == compared {
-        let (width, height) = original.dimensions();
-        let response_image =
-            ImageBuffer::from_fn(width, height, |_x, _y| Rgba([255, 255, 255, 255]));
-        return DynamicImage::ImageRgba8(response_image);
-    }
+    let (width, height) = original.dimensions();
 
-    DynamicImage::default()
+    DynamicImage::ImageRgba8(ImageBuffer::from_fn(width, height, |x, y| {
+        let original_pixel = original.get_pixel(x, y);
+        let compared_pixel = compared.get_pixel(x, y);
+        if original_pixel == compared_pixel {
+            Rgba([255, 255, 255, 255])
+        } else {
+            Rgba([255, 0, 0, 255])
+        }
+    }))
 }
 
 pub fn compare_images_from_path(original: &str, compared: &str) -> DynamicImage {

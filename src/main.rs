@@ -8,13 +8,11 @@ struct App {}
 impl eframe::App for App {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         egui::CentralPanel::default().show(ctx, |ui| {
-            egui::ScrollArea::both().show(ui, |ui| {
-                //ui.add(
-                //    egui::Image::new("./tests/redemensioned.png").rounding(10.0),
-                //);
-
-                ui.image(egui::include_image!("../tests/redemensioned.png"));
-            });
+          ui.columns(3, |columns| {
+            columns[0].add(egui::Image::new("file://./tests/redemensioned.png"));
+            columns[1].add(egui::Image::new("file://./tests/square.png"));
+            columns[2].add(egui::Image::new("file://./tests/difference_redemensioned.png"));
+          });
         });
     }
 }

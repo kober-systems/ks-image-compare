@@ -7,8 +7,8 @@ use thiserror::Error;
 
 #[derive(Error, Debug)]
 pub enum Error {
-  #[error("an error has occured: {0}")]
-  SimpleError(String),
+  #[error(transparent)]
+  ImageError(#[from] image::ImageError),
 }
 
 fn compare_images(original: DynamicImage, compared: DynamicImage) -> DynamicImage {
@@ -26,8 +26,8 @@ fn compare_images(original: DynamicImage, compared: DynamicImage) -> DynamicImag
 }
 
 pub fn compare_images_from_path(original: &str, compared: &str) -> Result<DynamicImage, Error> {
-    let original_img = open(original).expect(&format!("Failed to open file {}", original));
-    let compared_img = open(compared).expect(&format!("Failed to open file {}", compared));
+    let original_img = open(original)?;
+    let compared_img = open(compared)?;
     Ok(compare_images(original_img, compared_img))
 }
 

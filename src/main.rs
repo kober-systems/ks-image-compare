@@ -9,9 +9,9 @@ impl eframe::App for App {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         egui::CentralPanel::default().show(ctx, |ui| {
           ui.columns(3, |columns| {
-            columns[0].add(egui::Image::new("file://./tests/redemensioned.png"));
-            columns[1].add(egui::Image::new("file://./tests/square.png"));
-            columns[2].add(egui::Image::new("file://./tests/difference_redemensioned.png"));
+            columns[0].image("file://./tests/redemensioned.png");
+            columns[1].image("file://./tests/square.png");
+            columns[2].image("file://./tests/difference_redemensioned.png");
           });
         });
     }

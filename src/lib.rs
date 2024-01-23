@@ -3,6 +3,13 @@ use image::DynamicImage;
 use image::GenericImageView;
 use image::ImageBuffer;
 use image::Rgba;
+use thiserror::Error;
+
+#[derive(Error, Debug)]
+pub enum Error {
+  #[error("an error has occured: {0}")]
+  SimpleError(String),
+}
 
 fn compare_images(original: DynamicImage, compared: DynamicImage) -> DynamicImage {
     let (width, height) = original.dimensions();
@@ -18,14 +25,15 @@ fn compare_images(original: DynamicImage, compared: DynamicImage) -> DynamicImag
     }))
 }
 
-pub fn compare_images_from_path(original: &str, compared: &str) -> DynamicImage {
+pub fn compare_images_from_path(original: &str, compared: &str) -> Result<DynamicImage, Error> {
     let original_img = open(original).expect(&format!("Failed to open file {}", original));
     let compared_img = open(compared).expect(&format!("Failed to open file {}", compared));
-    compare_images(original_img, compared_img)
+    Ok(compare_images(original_img, compared_img))
 }
 
 #[cfg(test)]
 mod tests {
+  use super::*;
 
     #[test]
     fn basic_test() {

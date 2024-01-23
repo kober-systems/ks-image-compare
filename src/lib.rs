@@ -11,9 +11,8 @@ pub enum Error {
   ImageError(#[from] image::ImageError),
 }
 
-const EqualColor: Rgba<u8> = Rgba([255, 255, 255, 255]);
-const ChangedColor: Rgba<u8> = Rgba([255, 0, 0, 255]);
-
+const EQUAL_COLOR: Rgba<u8> = Rgba([255, 255, 255, 255]);
+const CHANGED_COLOR: Rgba<u8> = Rgba([255, 0, 0, 255]);
 
 fn compare_images(original: DynamicImage, compared: DynamicImage) -> DynamicImage {
     let (width, height) = original.dimensions();
@@ -22,9 +21,9 @@ fn compare_images(original: DynamicImage, compared: DynamicImage) -> DynamicImag
         let original_pixel = original.get_pixel(x, y);
         let compared_pixel = compared.get_pixel(x, y);
         if original_pixel == compared_pixel {
-            EqualColor
+            EQUAL_COLOR
         } else {
-            ChangedColor
+            CHANGED_COLOR
         }
     }))
 }

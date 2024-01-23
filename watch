@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+watchexec --clear=reset \
+  './build && \
+   git add . && \
+   echo "changes in source code:" && \
+   git diff --cached && \
+   echo "" && echo "new files:"  && \
+   git status --porcelain \
+'

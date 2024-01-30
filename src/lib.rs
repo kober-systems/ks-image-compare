@@ -5,6 +5,8 @@ use image::ImageBuffer;
 use image::Rgba;
 use thiserror::Error;
 
+pub mod options;
+
 #[derive(Error, Debug)]
 pub enum Error {
     #[error(transparent)]

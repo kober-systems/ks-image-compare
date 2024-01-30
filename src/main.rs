@@ -1,12 +1,9 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")] // hide console window on Windows in release
 
-use clap::Parser;
 use eframe::egui;
 use egui::ColorImage;
 use image::DynamicImage;
 use image_compare::*;
-
-mod options;
 
 #[derive(Default)]
 struct App {

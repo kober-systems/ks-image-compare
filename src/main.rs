@@ -1,54 +1,69 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")] // hide console window on Windows in release
 
-use eframe::egui;
 use clap::Parser;
-use std::path::PathBuf;
-use image_compare::*;
-use image::DynamicImage;
+use eframe::egui;
 use egui::ColorImage;
+use image::DynamicImage;
+use image_compare::*;
+use std::path::PathBuf;
 
 #[derive(Default)]
 struct App {
-  img1: String,
-  img2: String,
+    img1: DynamicImage,
+    img2: DynamicImage,
 }
 
 impl eframe::App for App {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         egui::CentralPanel::default().show(ctx, |ui| {
-          ui.columns(3, |columns| {
-            columns[0].image(format!("file://{}",self.img1));
-            columns[1].image(format!("file://{}",self.img2));
+            ui.columns(3, |columns| {
+                show_dynamic_image(&self.img1, &mut columns[0], ctx);
+                show_dynamic_image(&self.img2, &mut columns[1], ctx);
 
-            match compare_images_from_path(&self.img1, &self.img2) {
-              Ok(img) => columns[2].image(&ctx.load_texture(
-                "result", dynamic_image_to_egui(img), egui::TextureOptions::default())),
-              Err(_e) => columns[2].label("No image found"),
-            }
-          });
+                show_dynamic_image(
+                    &compare_images(&self.img1, &self.img2),
+                    &mut columns[2],
+                    ctx,
+                );
+            });
         });
     }
 }
 
-fn dynamic_image_to_egui(img: DynamicImage) -> egui::ColorImage {
-  let img_data = img.to_rgba8();
-  ColorImage::from_rgba_unmultiplied([
-      img.width().try_into().unwrap(),
-      img.height().try_into().unwrap()],
-      &img_data)
+fn show_dynamic_image(
+    img: &DynamicImage,
+    ui: &mut egui::Ui,
+    ctx: &egui::Context,
+) -> egui::Response {
+    match dynamic_image_to_egui(img) {
+        Ok(img) => ui.image(&ctx.load_texture("result", img, egui::TextureOptions::default())),
+        Err(e) => ui.label(e),
+    }
+}
+
+fn dynamic_image_to_egui(img: &DynamicImage) -> Result<egui::ColorImage, String> {
+    let img_data = img.to_rgba8();
+
+    Ok(ColorImage::from_rgba_unmultiplied(
+        [
+            img.width().try_into().or(Err("Problem with sizing"))?,
+            img.height().try_into().or(Err("Problem with the height"))?,
+        ],
+        &img_data,
+    ))
 }
 
 #[derive(Parser)]
 struct Args {
-  img1: PathBuf,
-  img2: PathBuf,
+    img1: PathBuf,
+    img2: PathBuf,
 }
 
-fn main() -> Result<(), eframe::Error> {
+fn main() -> Result<(), anyhow::Error> {
     let args = Args::parse();
     let app = App {
-      img1: args.img1.to_str().unwrap().to_string(),
-      img2: args.img2.to_str().unwrap().to_string(),
+        img1: image::open(args.img1)?,
+        img2: image::open(args.img2)?,
     };
 
     //env_logger::init(); // Log to stderr (if you run with `RUST_LOG=debug`).
@@ -65,5 +80,7 @@ fn main() -> Result<(), eframe::Error> {
             Box::new(app)
         }),
     )
-}
+    .expect("Something went wrong with egui");
 
+    Ok(())
+}

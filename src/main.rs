@@ -54,6 +54,7 @@ fn dynamic_image_to_egui(img: &DynamicImage) -> Result<egui::ColorImage, String>
 }
 
 #[derive(Parser)]
+#[command(author, version, about)]
 struct Args {
     img1: PathBuf,
     img2: PathBuf,

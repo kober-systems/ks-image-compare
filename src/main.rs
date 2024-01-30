@@ -5,7 +5,8 @@ use eframe::egui;
 use egui::ColorImage;
 use image::DynamicImage;
 use image_compare::*;
-use std::path::PathBuf;
+
+mod options;
 
 #[derive(Default)]
 struct App {
@@ -53,15 +54,8 @@ fn dynamic_image_to_egui(img: &DynamicImage) -> Result<egui::ColorImage, String>
     ))
 }
 
-#[derive(Parser)]
-#[command(author, version, about)]
-struct Args {
-    img1: PathBuf,
-    img2: PathBuf,
-}
-
 fn main() -> Result<(), anyhow::Error> {
-    let args = Args::parse();
+    let args = options::Args::parse();
     let app = App {
         img1: image::open(args.img1)?,
         img2: image::open(args.img2)?,

@@ -6,6 +6,8 @@ use std::path::PathBuf;
 pub struct Args {
     pub img1: PathBuf,
     pub img2: PathBuf,
+    #[arg(long, short)]
+    pub output: Option<String>,
 }
 
 impl Args {

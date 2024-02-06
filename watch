@@ -4,7 +4,7 @@ watchexec --clear=reset \
   './build && \
    git add . && \
    echo "changes in source code:" && \
-   git diff --cached && \
+   git --no-pager diff --cached && \
    echo "" && echo "new files:"  && \
    git status --porcelain \
 '

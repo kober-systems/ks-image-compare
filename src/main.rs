@@ -118,12 +118,14 @@ fn main() -> Result<(), anyhow::Error> {
     let app = App {
         img1_path: args
             .img1
+            .canonicalize()?
             .to_str()
             .expect("Path not convertable")
             .to_string(),
         img1: image::open(args.img1)?,
         img2_path: args
             .img2
+            .canonicalize()?
             .to_str()
             .expect("Path not convertable")
             .to_string(),

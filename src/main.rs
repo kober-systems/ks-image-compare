@@ -137,7 +137,7 @@ fn main() -> Result<(), anyhow::Error> {
         ..Default::default()
     };
     eframe::run_native(
-        "Image Viewer",
+        "Compare Image",
         options,
         Box::new(|cc| {
             // This gives us image support:

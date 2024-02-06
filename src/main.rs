@@ -74,11 +74,24 @@ fn show_dynamic_image(
     ctx: &egui::Context,
 ) -> egui::Response {
     match dynamic_image_to_egui(img) {
-        Ok(img) => ui.add(
-            egui::Image::new(&ctx.load_texture("result", img, egui::TextureOptions::default()))
-                .max_width(width)
-                .max_height(height),
-        ),
+        Ok(img) => {
+            ui.allocate_ui_with_layout(
+                egui::Vec2::new(width, height),
+                egui::Layout::top_down_justified(egui::Align::Center),
+                |ui| {
+                    ui.add(
+                        egui::Image::new(&ctx.load_texture(
+                            "result",
+                            img,
+                            egui::TextureOptions::default(),
+                        ))
+                        .max_width(width)
+                        .max_height(height),
+                    )
+                },
+            )
+            .response
+        }
         Err(e) => ui.label(e),
     }
 }

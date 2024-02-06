@@ -14,16 +14,48 @@ struct App {
 impl eframe::App for App {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         egui::CentralPanel::default().show(ctx, |ui| {
-            ui.columns(3, |columns| {
-                show_dynamic_image(&self.img1, &mut columns[0], ctx);
-                show_dynamic_image(&self.img2, &mut columns[1], ctx);
+            let width = ui.available_width();
+            let height = ui.available_height();
 
-                show_dynamic_image(
-                    &compare_images(&self.img1, &self.img2),
-                    &mut columns[2],
-                    ctx,
-                );
-            });
+            ui.allocate_ui_at_rect(
+                egui::Rect::from_min_size(
+                    egui::Pos2::new(0.0, 0.0),
+                    egui::vec2(width * 0.5, height * 0.5),
+                ),
+                |mut ui| {
+                    let rect = ui.max_rect();
+                    ui.painter()
+                        .rect_filled(rect, 0.0, egui::Color32::from_rgb(255, 150, 150));
+                    ui.label("original");
+                    show_dynamic_image(&self.img1, &mut ui, ctx);
+                },
+            );
+            ui.allocate_ui_at_rect(
+                egui::Rect::from_min_size(
+                    egui::Pos2::new(width * 0.5, 0.0),
+                    egui::vec2(width * 0.5, height * 0.5),
+                ),
+                |mut ui| {
+                    let rect = ui.max_rect();
+                    ui.painter()
+                        .rect_filled(rect, 0.0, egui::Color32::from_rgb(0, 255, 150));
+                    ui.label("compared");
+                    show_dynamic_image(&self.img2, &mut ui, ctx);
+                },
+            );
+            ui.allocate_ui_at_rect(
+                egui::Rect::from_min_size(
+                    egui::Pos2::new(0.0, height * 0.5),
+                    egui::vec2(width, height * 0.5),
+                ),
+                |mut ui| {
+                    let rect = ui.max_rect();
+                    ui.painter()
+                        .rect_filled(rect, 0.0, egui::Color32::from_rgb(50, 25, 250));
+                    ui.label("result");
+                    show_dynamic_image(&compare_images(&self.img1, &self.img2), &mut ui, ctx);
+                },
+            );
         });
     }
 }

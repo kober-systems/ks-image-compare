@@ -13,57 +13,58 @@ struct App {
 
 impl eframe::App for App {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
-        egui::CentralPanel::default().show(ctx, |ui| {
+        egui::CentralPanel::default().show(ctx, |mut ui| {
             let width = ui.available_width();
             let height = ui.available_height();
 
-            ui.allocate_ui_at_rect(
-                egui::Rect::from_min_size(
-                    egui::Pos2::new(0.0, 0.0),
-                    egui::vec2(width * 0.5, height * 0.5),
-                ),
-                |mut ui| {
-                    let rect = ui.max_rect();
-                    ui.painter()
-                        .rect_filled(rect, 0.0, egui::Color32::from_rgb(255, 150, 150));
-                    ui.label("original");
-                    show_dynamic_image(&self.img1, width * 0.5, height * 0.45, &mut ui, ctx);
-                },
+            place_image(
+                "original",
+                &self.img1,
+                egui::Pos2::new(0.0, 0.0),
+                width * 0.5,
+                height * 0.5,
+                &mut ui,
+                ctx,
             );
-            ui.allocate_ui_at_rect(
-                egui::Rect::from_min_size(
-                    egui::Pos2::new(width * 0.5, 0.0),
-                    egui::vec2(width * 0.5, height * 0.5),
-                ),
-                |mut ui| {
-                    let rect = ui.max_rect();
-                    ui.painter()
-                        .rect_filled(rect, 0.0, egui::Color32::from_rgb(0, 255, 150));
-                    ui.label("compared");
-                    show_dynamic_image(&self.img2, width * 0.5, height * 0.45, &mut ui, ctx);
-                },
+            place_image(
+                "compared",
+                &self.img2,
+                egui::Pos2::new(width * 0.5, 0.0),
+                width * 0.5,
+                height * 0.5,
+                &mut ui,
+                ctx,
             );
-            ui.allocate_ui_at_rect(
-                egui::Rect::from_min_size(
-                    egui::Pos2::new(0.0, height * 0.5),
-                    egui::vec2(width, height * 0.5),
-                ),
-                |mut ui| {
-                    let rect = ui.max_rect();
-                    ui.painter()
-                        .rect_filled(rect, 0.0, egui::Color32::from_rgb(50, 25, 250));
-                    ui.label("result");
-                    show_dynamic_image(
-                        &compare_images(&self.img1, &self.img2),
-                        width,
-                        height * 0.45,
-                        &mut ui,
-                        ctx,
-                    );
-                },
+            place_image(
+                "result",
+                &compare_images(&self.img1, &self.img2),
+                egui::Pos2::new(0.0, height * 0.5),
+                width,
+                height * 0.5,
+                &mut ui,
+                ctx,
             );
         });
     }
+}
+
+fn place_image(
+    label: &str,
+    img: &DynamicImage,
+    pos: egui::Pos2,
+    width: f32,
+    height: f32,
+    ui: &mut egui::Ui,
+    ctx: &egui::Context,
+) -> egui::Response {
+    ui.allocate_ui_at_rect(
+        egui::Rect::from_min_size(pos, egui::vec2(width, height)),
+        |mut ui| {
+            ui.label(label);
+            show_dynamic_image(&img, width, height * 0.9, &mut ui, ctx);
+        },
+    )
+    .response
 }
 
 fn show_dynamic_image(

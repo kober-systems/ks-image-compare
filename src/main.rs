@@ -1,5 +1,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")] // hide console window on Windows in release
 
+use std::fmt::format;
+
 use eframe::egui;
 use egui::ColorImage;
 use image::DynamicImage;
@@ -7,7 +9,9 @@ use image_compare::*;
 
 #[derive(Default)]
 struct App {
+    img1_path: String,
     img1: DynamicImage,
+    img2_path: String,
     img2: DynamicImage,
 }
 
@@ -18,7 +22,7 @@ impl eframe::App for App {
             let height = ui.available_height();
 
             place_image(
-                "original",
+                &format!("original: {}", self.img1_path),
                 &self.img1,
                 egui::Pos2::new(0.0, 0.0),
                 width * 0.5,
@@ -27,7 +31,7 @@ impl eframe::App for App {
                 ctx,
             );
             place_image(
-                "compared",
+                &format!("compared: {}", self.img2_path),
                 &self.img2,
                 egui::Pos2::new(width * 0.5, 0.0),
                 width * 0.5,
@@ -112,7 +116,17 @@ fn dynamic_image_to_egui(img: &DynamicImage) -> Result<egui::ColorImage, String>
 fn main() -> Result<(), anyhow::Error> {
     let args = options::Args::parse();
     let app = App {
+        img1_path: args
+            .img1
+            .to_str()
+            .expect("Path not convertable")
+            .to_string(),
         img1: image::open(args.img1)?,
+        img2_path: args
+            .img2
+            .to_str()
+            .expect("Path not convertable")
+            .to_string(),
         img2: image::open(args.img2)?,
     };
 

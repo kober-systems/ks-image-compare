@@ -1,6 +1,6 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")] // hide console window on Windows in release
 
-use std::fmt::format;
+use std::{fmt::format, path::PathBuf};
 
 use eframe::egui;
 use egui::ColorImage;
@@ -113,22 +113,21 @@ fn dynamic_image_to_egui(img: &DynamicImage) -> Result<egui::ColorImage, String>
     ))
 }
 
+fn path_to_label(file_name: &std::path::PathBuf) -> String {
+    file_name
+        .canonicalize()
+        .expect("Unable to get the path")
+        .to_str()
+        .expect("Path not convertable")
+        .to_string()
+}
+
 fn main() -> Result<(), anyhow::Error> {
     let args = options::Args::parse();
     let app = App {
-        img1_path: args
-            .img1
-            .canonicalize()?
-            .to_str()
-            .expect("Path not convertable")
-            .to_string(),
+        img1_path: path_to_label(&args.img1),
         img1: image::open(args.img1)?,
-        img2_path: args
-            .img2
-            .canonicalize()?
-            .to_str()
-            .expect("Path not convertable")
-            .to_string(),
+        img2_path: path_to_label(&args.img2),
         img2: image::open(args.img2)?,
     };
 

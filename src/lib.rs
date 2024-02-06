@@ -30,6 +30,28 @@ pub fn compare_images(original: &DynamicImage, compared: &DynamicImage) -> Dynam
     }))
 }
 
+pub fn compare_images_color_difference(
+    original: &DynamicImage,
+    compared: &DynamicImage,
+) -> DynamicImage {
+    let (width, height) = original.dimensions();
+
+    DynamicImage::ImageRgba8(ImageBuffer::from_fn(width, height, |x, y| {
+        let original_pixel = original.get_pixel(x, y);
+        let compared_pixel = compared.get_pixel(x, y);
+        Rgba([
+            rgb_channel_difference(original_pixel[0], compared_pixel[0]),
+            rgb_channel_difference(original_pixel[1], compared_pixel[1]),
+            rgb_channel_difference(original_pixel[2], compared_pixel[2]),
+            255,
+        ])
+    }))
+}
+
+fn rgb_channel_difference(original: u8, compared: u8) -> u8 {
+    255 - ((original as i16 - compared as i16).abs() as u8)
+}
+
 pub fn compare_images_from_path(original: &str, compared: &str) -> Result<DynamicImage, Error> {
     let original_img = open(original)?;
     let compared_img = open(compared)?;

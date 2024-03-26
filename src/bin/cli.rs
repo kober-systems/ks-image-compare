@@ -1,6 +1,6 @@
 use std::io::{Cursor, Write};
 
-use image_compare::*;
+use ks_image_compare::*;
 
 fn main() -> Result<(), anyhow::Error> {
     let args = options::Args::parse();

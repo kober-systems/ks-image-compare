@@ -1,5 +1,5 @@
 use image::{open, DynamicImage};
-use image_compare::*;
+use ks_image_compare::*;
 
 #[test]
 fn when_the_images_are_equal_return_empty() -> Result<(), Error> {

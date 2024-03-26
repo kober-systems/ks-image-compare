@@ -3,7 +3,7 @@
 use eframe::egui;
 use egui::ColorImage;
 use image::DynamicImage;
-use image_compare::*;
+use ks_image_compare::*;
 
 #[derive(Default)]
 struct App {

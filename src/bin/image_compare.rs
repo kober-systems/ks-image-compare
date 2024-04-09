@@ -4,6 +4,7 @@ use eframe::egui;
 use egui::ColorImage;
 use image::DynamicImage;
 use ks_image_compare::*;
+use std::path::PathBuf;
 
 #[derive(Default)]
 struct App {
@@ -120,13 +121,17 @@ fn path_to_label(file_name: &std::path::PathBuf) -> String {
         .to_string()
 }
 
+fn read_image_from_path(path: &PathBuf) -> DynamicImage {
+  image::open(path).unwrap_or(image::RgbImage::new(0, 0).into())
+}
+
 fn main() -> Result<(), anyhow::Error> {
     let args = options::Args::parse();
     let app = App {
         img1_path: path_to_label(&args.img1),
-        img1: image::open(args.img1)?,
+        img1: read_image_from_path(&args.img1),
         img2_path: path_to_label(&args.img2),
-        img2: image::open(args.img2)?,
+        img2: read_image_from_path(&args.img2),
     };
 
     //env_logger::init(); // Log to stderr (if you run with `RUST_LOG=debug`).

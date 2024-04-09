@@ -4,6 +4,7 @@ use eframe::egui;
 use egui::ColorImage;
 use image::DynamicImage;
 use ks_image_compare::*;
+use log::warn;
 use std::path::PathBuf;
 
 #[derive(Default)]
@@ -122,7 +123,13 @@ fn path_to_label(file_name: &std::path::PathBuf) -> String {
 }
 
 fn read_image_from_path(path: &PathBuf) -> DynamicImage {
-  image::open(path).unwrap_or(image::RgbImage::new(0, 0).into())
+  match image::open(path) {
+    Ok(img) => img,
+    Err(e) => {
+      warn!("Couldn't open image {} ({})", path.display(), e);
+      image::RgbImage::new(0, 0).into()
+    }
+  }
 }
 
 fn main() -> Result<(), anyhow::Error> {

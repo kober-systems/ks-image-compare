@@ -133,6 +133,7 @@ fn read_image_from_path(path: &PathBuf) -> DynamicImage {
 }
 
 fn main() -> Result<(), anyhow::Error> {
+    env_logger::init(); // Log to stderr (if you run with `RUST_LOG=debug`).
     let args = options::Args::parse();
     let app = App {
         img1_path: path_to_label(&args.img1),
@@ -141,7 +142,6 @@ fn main() -> Result<(), anyhow::Error> {
         img2: read_image_from_path(&args.img2),
     };
 
-    //env_logger::init(); // Log to stderr (if you run with `RUST_LOG=debug`).
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default().with_inner_size([600.0, 800.0]),
         ..Default::default()

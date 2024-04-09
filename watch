@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 watchexec --clear=reset \
+  --ignore "docs/screenshots/*.png" \
   './build && \
    git add . && \
    echo "changes in source code:" && \

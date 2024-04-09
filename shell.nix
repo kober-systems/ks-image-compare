@@ -25,6 +25,7 @@ pkgs.mkShell {
 
     # keep this line if you use bash
     bashInteractive
+    elvish # for build scrips
   ];
 }
 

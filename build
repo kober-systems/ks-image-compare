@@ -1,3 +1,13 @@
-#!/usr/bin/env bash
+#!/usr/bin/env elvish
 
 cargo test
+
+try {
+  rm ./docs/screenshots/*.png
+} catch e { }
+
+{
+  tmp E:EFRAME_SCREENSHOT_TO = "./docs/screenshots/base.png";
+  cargo run --bin image_compare -- ./tests/square.png ./tests/square_modified.png
+}
+

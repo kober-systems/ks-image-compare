@@ -17,6 +17,17 @@ fn when_the_picture_is_redemensioned_return_difference() -> Result<(), Error> {
     ))
 }
 
+#[test]
+fn images_with_different_size() -> Result<(), Error> {
+    Ok(image_compare(
+        "./tests/difference_ferris_diffent_image_sizes.png",
+        compare_images_from_path(
+            "./tests/cuddlyferris.png",
+            "./tests/rustacean-flat-noshadow.png",
+        )?,
+    ))
+}
+
 fn image_compare(original: &str, compared: DynamicImage) {
     let original_img = open(original).expect(&format!("Failed to open file {}", original));
 

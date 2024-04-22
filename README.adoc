@@ -15,6 +15,8 @@ KS Image Compare takes two images as inputs and shows the discrepancies
 between them. Useful for comparing edited versions of pictures or
 verifying adjustments made in graphic design projects.
 
+image::docs/screenshots/base.png[Basic Usage]
+
 === Installation
 
 ==== From Source code

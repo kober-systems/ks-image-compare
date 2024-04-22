@@ -8,6 +8,6 @@ try {
 
 {
   tmp E:EFRAME_SCREENSHOT_TO = "./docs/screenshots/base.png";
-  cargo run --bin image_compare -- ./tests/square.png ./tests/square_modified.png
+  cargo run --bin image_compare -- ./tests/rustacean-orig-noshadow.png ./tests/rustacean-flat-noshadow.png
 }
 

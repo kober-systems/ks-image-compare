@@ -1,5 +1,8 @@
 = KS Image Compare
 
+image:https://img.shields.io/github/languages/code-size/kober-systems/ks-image-compare?style=flat-square[link=https://github.com/kober-systems/ks-image-compare]
+image:https://deps.rs/repo/github/kober-systems/ks-image-compare/status.svg[link=https://deps.rs/repo/github/kober-systems/ks-image-compare]
+
 When creating GUI's, sometimes changes to the code will change the
 appearance of the GUI in unexpected but often subtle ways. KS Image
 Compare shows any GUI changes and visually display their differences. It

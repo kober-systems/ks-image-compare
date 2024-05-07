@@ -5,6 +5,7 @@ use image::ImageBuffer;
 use image::Rgba;
 use thiserror::Error;
 
+pub mod app;
 pub mod options;
 
 #[derive(Error, Debug)]

@@ -14,10 +14,10 @@ categories = ["gui","command-line-utilities", "development-tools", "multimedia::
 [dependencies]
 anyhow = "1.0.79"
 clap = { version = "4.4", features = ["derive"]}
-eframe = { version = "0.25.0", features = ["default", "__screenshot"]}
-egui = "0.25.0"
-egui_extras = { version = "0.25.0", features = ["all_loaders"]}
+eframe = { version = "0.27", features = ["default", "__screenshot"]}
+egui = "0.27"
+egui_extras = { version = "0.27", features = ["all_loaders"]}
 env_logger = "0.11.3"
-image = "0.24.8"
+image = "0.24"
 log = "0.4.21"
 thiserror = "1.0.56"

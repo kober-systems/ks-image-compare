@@ -11,20 +11,42 @@ fn main() -> Result<(), anyhow::Error> {
         img2: read_image_from_path(&args.img2),
     };
 
-    let options = eframe::NativeOptions {
-        viewport: egui::ViewportBuilder::default().with_inner_size([600.0, 800.0]),
-        ..Default::default()
-    };
-    eframe::run_native(
-        "Compare Image",
-        options,
-        Box::new(|cc| {
-            // This gives us image support:
-            egui_extras::install_image_loaders(&cc.egui_ctx);
-            Box::new(app)
-        }),
-    )
-    .expect("Something went wrong with egui");
+    match args.output {
+        Some(path) => {
+            use std::io::{Cursor, Write};
+
+            let out = compare_images(&app.img1, &app.img2);
+
+            if path == "-" {
+                let mut image_buffer = Vec::new();
+                let mut cursor = Cursor::new(&mut image_buffer);
+                out.write_to(&mut cursor, image::ImageOutputFormat::Png)?;
+
+                let stdout = std::io::stdout();
+                let mut handle = stdout.lock();
+                handle.write_all(&image_buffer)?;
+                handle.flush()?;
+            } else {
+                out.save(path).expect("could not save")
+            }
+        }
+        None => {
+            let options = eframe::NativeOptions {
+                viewport: egui::ViewportBuilder::default().with_inner_size([600.0, 800.0]),
+                ..Default::default()
+            };
+            eframe::run_native(
+                "Compare Image",
+                options,
+                Box::new(|cc| {
+                    // This gives us image support:
+                    egui_extras::install_image_loaders(&cc.egui_ctx);
+                    Box::new(app)
+                }),
+            )
+            .expect("Something went wrong with egui");
+        }
+    }
 
     Ok(())
 }

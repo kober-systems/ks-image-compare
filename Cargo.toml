@@ -15,7 +15,7 @@ categories = ["gui","command-line-utilities", "development-tools", "multimedia::
 anyhow = "1.0.79"
 clap = { version = "4.4", features = ["derive"]}
 eframe = { version = "0.27", features = ["default", "__screenshot"]}
-egui = "0.27"
+egui = "0.33"
 egui_extras = { version = "0.27", features = ["all_loaders"]}
 env_logger = "0.11.3"
 image = "0.24"

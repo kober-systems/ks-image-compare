@@ -18,6 +18,6 @@ eframe = { version = "0.33", features = ["default", "__screenshot"]}
 egui = "0.33"
 egui_extras = { version = "0.33", features = ["all_loaders"]}
 env_logger = "0.11.3"
-image = "0.24"
+image = "0.25"
 log = "0.4.21"
 thiserror = "2.0.0"

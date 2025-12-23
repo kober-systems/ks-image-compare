@@ -20,7 +20,7 @@ fn main() -> Result<(), anyhow::Error> {
             if path == "-" {
                 let mut image_buffer = Vec::new();
                 let mut cursor = Cursor::new(&mut image_buffer);
-                out.write_to(&mut cursor, image::ImageOutputFormat::Png)?;
+                out.write_to(&mut cursor, image::ImageFormat::Png)?;
 
                 let stdout = std::io::stdout();
                 let mut handle = stdout.lock();

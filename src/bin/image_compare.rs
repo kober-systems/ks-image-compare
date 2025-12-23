@@ -41,7 +41,7 @@ fn main() -> Result<(), anyhow::Error> {
                 Box::new(|cc| {
                     // This gives us image support:
                     egui_extras::install_image_loaders(&cc.egui_ctx);
-                    Box::new(app)
+                    Ok(Box::new(app))
                 }),
             )
             .expect("Something went wrong with egui");

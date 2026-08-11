@@ -28,13 +28,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "accesskit"
+version = "0.24.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d3b7f7f85a7e5f68090000ed7622545829afd484d210358702ae4cb97dd0c320"
+dependencies = [
+ "uuid",
+]
+
+[[package]]
 name = "accesskit_atspi_common"
 version = "0.18.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1e8c61bee90b42a772d39d06a740207dc71a4e780004ace1db8d99fb1baaa954"
 dependencies = [
+<<<<<<< HEAD
  "accesskit",
  "accesskit_consumer 0.36.0",
+=======
+ "accesskit 0.21.1",
+ "accesskit_consumer",
+>>>>>>> origin/renovate/egui-0.x
  "atspi-common",
  "phf 0.13.1",
  "serde",
@@ -47,6 +61,7 @@ version = "0.35.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "53cf47daed85312e763fbf85ceca136e0d7abc68e0a7e12abe11f48172bc3b10"
 dependencies = [
+<<<<<<< HEAD
  "accesskit",
  "hashbrown 0.16.1",
 ]
@@ -69,6 +84,10 @@ checksum = "5d10a236f96f87d70732e44520046785431ef01d5bcd6b041317bfadd2f88245"
 dependencies = [
  "accesskit",
  "hashbrown 0.16.1",
+=======
+ "accesskit 0.21.1",
+ "hashbrown 0.15.5",
+>>>>>>> origin/renovate/egui-0.x
 ]
 
 [[package]]
@@ -77,9 +96,15 @@ version = "0.26.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ce02dc63b43f0c9296af9ac946312a2dc8814427d7a64d2d600971dac55b6076"
 dependencies = [
+<<<<<<< HEAD
  "accesskit",
  "accesskit_consumer 0.38.0",
  "hashbrown 0.16.1",
+=======
+ "accesskit 0.21.1",
+ "accesskit_consumer",
+ "hashbrown 0.15.5",
+>>>>>>> origin/renovate/egui-0.x
  "objc2 0.5.2",
  "objc2-app-kit 0.2.2",
  "objc2-foundation 0.2.2",
@@ -91,7 +116,7 @@ version = "0.21.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b016ca8db0ea0ea2ceff29a9d6240391492d960716aa471967c00e8cc8cb197c"
 dependencies = [
- "accesskit",
+ "accesskit 0.21.1",
  "accesskit_atspi_common",
  "async-channel",
  "async-executor",
@@ -109,9 +134,15 @@ version = "0.32.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "eff7009f1a532e917d66970a1e80c965140c6cfbbabbdde3d64e5431e6c78e21"
 dependencies = [
+<<<<<<< HEAD
  "accesskit",
  "accesskit_consumer 0.35.0",
  "hashbrown 0.16.1",
+=======
+ "accesskit 0.21.1",
+ "accesskit_consumer",
+ "hashbrown 0.15.5",
+>>>>>>> origin/renovate/egui-0.x
  "static_assertions",
  "windows 0.62.2",
  "windows-core 0.62.2",
@@ -123,7 +154,7 @@ version = "0.32.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1fe9a94394896352cc4660ca2288bd4ef883d83238853c038b44070c8f134313"
 dependencies = [
- "accesskit",
+ "accesskit 0.21.1",
  "accesskit_macos",
  "accesskit_unix",
  "accesskit_windows",
@@ -920,7 +951,22 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "45390e6114f68f718cc7a830514a96f903cccd70d02a8f6d9f643ac4ba45afaf"
 dependencies = [
  "bitflags 1.3.2",
+<<<<<<< HEAD
  "core-foundation",
+=======
+ "core-foundation 0.9.4",
+ "libc",
+]
+
+[[package]]
+name = "core-graphics-types"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3d44a101f213f6c4cdc1853d4b78aef6db6bdfa3468798cc1d9912f4735013eb"
+dependencies = [
+ "bitflags 2.13.1",
+ "core-foundation 0.10.1",
+>>>>>>> origin/renovate/egui-0.x
  "libc",
 ]
 
@@ -998,7 +1044,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "89a09f22a6c6069a18470eb92d2298acf25463f14256d24778e1230d789a2aec"
 dependencies = [
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "objc2 0.6.4",
+=======
+ "objc2 0.6.3",
+>>>>>>> origin/renovate/egui-0.x
 ]
 
 [[package]]
@@ -1058,6 +1108,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fc883f505d446814c0226bef4b64564b9adb9966fc00c88c57ce6d827dd152d6"
 dependencies = [
  "bytemuck",
+<<<<<<< HEAD
+=======
+ "emath 0.33.3",
+]
+
+[[package]]
+name = "ecolor"
+version = "0.36.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fc883f505d446814c0226bef4b64564b9adb9966fc00c88c57ce6d827dd152d6"
+dependencies = [
+>>>>>>> origin/renovate/egui-0.x
  "emath 0.36.1",
 ]
 
@@ -1070,7 +1132,11 @@ dependencies = [
  "ahash",
  "bytemuck",
  "document-features",
+<<<<<<< HEAD
  "egui 0.36.1",
+=======
+ "egui 0.33.3",
+>>>>>>> origin/renovate/egui-0.x
  "egui-wgpu",
  "egui-winit",
  "egui_glow",
@@ -1102,6 +1168,10 @@ version = "0.33.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6a9b567d356674e9a5121ed3fedfb0a7c31e059fe71f6972b691bcd0bfc284e3"
 dependencies = [
+<<<<<<< HEAD
+=======
+ "accesskit 0.21.1",
+>>>>>>> origin/renovate/egui-0.x
  "ahash",
  "bitflags 2.13.1",
  "emath 0.33.3",
@@ -1116,6 +1186,29 @@ dependencies = [
 [[package]]
 name = "egui"
 version = "0.36.1"
+<<<<<<< HEAD
+=======
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c977ac91dfaa651633fd9722e4ce9ccb32cda4c748b89a5cb57e504036e37c13"
+dependencies = [
+ "accesskit 0.24.1",
+ "ahash",
+ "bitflags 2.13.1",
+ "emath 0.36.1",
+ "epaint 0.36.1",
+ "itertools 0.15.0",
+ "log",
+ "nohash-hasher",
+ "profiling",
+ "smallvec",
+ "unicode-segmentation",
+ "web-sys",
+]
+
+[[package]]
+name = "egui-wgpu"
+version = "0.33.3"
+>>>>>>> origin/renovate/egui-0.x
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c977ac91dfaa651633fd9722e4ce9ccb32cda4c748b89a5cb57e504036e37c13"
 dependencies = [
@@ -1142,8 +1235,13 @@ dependencies = [
  "ahash",
  "bytemuck",
  "document-features",
+<<<<<<< HEAD
  "egui 0.36.1",
  "epaint 0.36.1",
+=======
+ "egui 0.33.3",
+ "epaint 0.33.3",
+>>>>>>> origin/renovate/egui-0.x
  "log",
  "profiling",
  "thiserror 2.0.20",
@@ -1162,7 +1260,11 @@ dependencies = [
  "accesskit_winit",
  "arboard",
  "bytemuck",
+<<<<<<< HEAD
  "egui 0.36.1",
+=======
+ "egui 0.33.3",
+>>>>>>> origin/renovate/egui-0.x
  "log",
  "objc2 0.6.4",
  "objc2-foundation 0.3.2",
@@ -1199,7 +1301,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "69b65e45f8d8d7c6d848b3ec41f642b54ad828033f1511d4b4c9adc09040166a"
 dependencies = [
  "bytemuck",
+<<<<<<< HEAD
  "egui 0.36.1",
+=======
+ "egui 0.33.3",
+>>>>>>> origin/renovate/egui-0.x
  "glow",
  "log",
  "profiling",
@@ -1240,6 +1346,12 @@ checksum = "dce03cf1604f74515830012c29991beb0b58f69e4e43f5afe22fa7afed65ccd5"
 dependencies = [
  "bytemuck",
 ]
+
+[[package]]
+name = "emath"
+version = "0.36.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dce03cf1604f74515830012c29991beb0b58f69e4e43f5afe22fa7afed65ccd5"
 
 [[package]]
 name = "endi"
@@ -1319,6 +1431,10 @@ checksum = "009d0dd3c2163823a0abdb899451ecbc78798dec545ee91b43aff1fa790bab62"
 dependencies = [
  "ab_glyph",
  "ahash",
+<<<<<<< HEAD
+=======
+ "bytemuck",
+>>>>>>> origin/renovate/egui-0.x
  "ecolor 0.33.3",
  "emath 0.33.3",
  "epaint_default_fonts 0.33.3",
@@ -1335,7 +1451,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "11863a6b2b7823010c1090ddf4706947bdda46766742def0673195cbf7ff4a73"
 dependencies = [
  "ahash",
+<<<<<<< HEAD
  "bytemuck",
+=======
+>>>>>>> origin/renovate/egui-0.x
  "ecolor 0.36.1",
  "emath 0.36.1",
  "epaint_default_fonts 0.36.1",
@@ -1679,6 +1798,25 @@ dependencies = [
 [[package]]
 name = "glifo"
 version = "0.2.0"
+<<<<<<< HEAD
+=======
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ed4a1bb24121291d27230c1b1b44e07d6a9b28cefdb32fe1581dfb84e14f940a"
+dependencies = [
+ "bytemuck",
+ "foldhash 0.2.0",
+ "hashbrown 0.17.1",
+ "log",
+ "peniko",
+ "skrifa",
+ "smallvec",
+ "vello_common",
+]
+
+[[package]]
+name = "glow"
+version = "0.16.0"
+>>>>>>> origin/renovate/egui-0.x
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ed4a1bb24121291d27230c1b1b44e07d6a9b28cefdb32fe1581dfb84e14f940a"
 dependencies = [
@@ -1771,6 +1909,28 @@ dependencies = [
 ]
 
 [[package]]
+<<<<<<< HEAD
+=======
+name = "gpu-alloc"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fbcd2dba93594b227a1f57ee09b8b9da8892c34d55aa332e034a228d0fe6a171"
+dependencies = [
+ "bitflags 2.13.1",
+ "gpu-alloc-types",
+]
+
+[[package]]
+name = "gpu-alloc-types"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "98ff03b468aa837d70984d55f5d3f846f6ec31fe34bbb97c4f85219caeee1ca4"
+dependencies = [
+ "bitflags 2.13.1",
+]
+
+[[package]]
+>>>>>>> origin/renovate/egui-0.x
 name = "gpu-allocator"
 version = "0.28.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1790,6 +1950,29 @@ version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6b17e70c989c36bad147b27a58d148c0741c51448aa5653436547323e524d0ab"
 dependencies = [
+<<<<<<< HEAD
+=======
+ "bitflags 2.13.1",
+ "gpu-descriptor-types",
+ "hashbrown 0.15.5",
+]
+
+[[package]]
+name = "gpu-descriptor-types"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fdf242682df893b86f33a73828fb09ca4b2d3bb6cc95249707fc684d27484b91"
+dependencies = [
+ "bitflags 2.13.1",
+]
+
+[[package]]
+name = "guillotiere"
+version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6b17e70c989c36bad147b27a58d148c0741c51448aa5653436547323e524d0ab"
+dependencies = [
+>>>>>>> origin/renovate/egui-0.x
  "euclid",
 ]
 
@@ -1808,6 +1991,21 @@ dependencies = [
 [[package]]
 name = "harfrust"
 version = "0.12.0"
+<<<<<<< HEAD
+=======
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c03d949a14aa089bbb282f7dd76a498a7f684428e4257202efc119ec010376f9"
+dependencies = [
+ "bitflags 2.13.1",
+ "bytemuck",
+ "read-fonts",
+ "smallvec",
+]
+
+[[package]]
+name = "hashbrown"
+version = "0.15.5"
+>>>>>>> origin/renovate/egui-0.x
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c03d949a14aa089bbb282f7dd76a498a7f684428e4257202efc119ec010376f9"
 dependencies = [
@@ -1835,6 +2033,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a"
 dependencies = [
  "foldhash",
+]
+
+[[package]]
+name = "hashbrown"
+version = "0.17.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a"
+dependencies = [
+ "foldhash 0.2.0",
 ]
 
 [[package]]
@@ -2155,9 +2362,15 @@ dependencies = [
 
 [[package]]
 name = "js-sys"
+<<<<<<< HEAD
 version = "0.3.104"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0e0c1080212aad755ea003d18543e8768dd432c48819efd73a7bf1e39b7a5a3a"
+=======
+version = "0.3.103"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "53b44bfcdb3f8d5837a46dae1ca9660a837176eee74a28b229bc626816589102"
+>>>>>>> origin/renovate/egui-0.x
 dependencies = [
  "cfg-if",
  "futures-util",
@@ -2188,7 +2401,11 @@ dependencies = [
  "anyhow",
  "clap",
  "eframe",
+<<<<<<< HEAD
  "egui 0.33.3",
+=======
+ "egui 0.36.1",
+>>>>>>> origin/renovate/egui-0.x
  "egui_extras",
  "env_logger",
  "image",
@@ -2357,6 +2574,24 @@ dependencies = [
 ]
 
 [[package]]
+<<<<<<< HEAD
+=======
+name = "metal"
+version = "0.32.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "00c15a6f673ff72ddcc22394663290f870fb224c1bfce55734a75c414150e605"
+dependencies = [
+ "bitflags 2.13.1",
+ "block",
+ "core-graphics-types 0.2.0",
+ "foreign-types",
+ "log",
+ "objc",
+ "paste",
+]
+
+[[package]]
+>>>>>>> origin/renovate/egui-0.x
 name = "mime"
 version = "0.3.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2439,7 +2674,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c3f42e7bbe13d351b6bead8286a43aac9534b82bd3cc43e47037f012ebfd62d4"
 dependencies = [
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "jni-sys 0.3.0",
+=======
+ "jni-sys",
+>>>>>>> origin/renovate/egui-0.x
  "log",
  "ndk-sys",
  "num_enum",
@@ -2607,7 +2846,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e4e89ad9e3d7d297152b17d39ed92cd50ca8063a89a9fa569046d41568891eff"
 dependencies = [
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "block2 0.5.1",
+=======
+ "block2",
+>>>>>>> origin/renovate/egui-0.x
  "libc",
  "objc2 0.5.2",
  "objc2-core-data",
@@ -2623,7 +2866,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d49e936b501e5c5bf01fda3a9452ff86dc3ea98ad5f283e1455153142d97518c"
 dependencies = [
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "objc2 0.6.4",
+=======
+ "objc2 0.6.3",
+>>>>>>> origin/renovate/egui-0.x
  "objc2-core-foundation",
  "objc2-core-graphics",
  "objc2-foundation 0.3.2",
@@ -2636,7 +2883,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "74dd3b56391c7a0596a295029734d3c1c5e7e510a4cb30245f8221ccea96b009"
 dependencies = [
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "block2 0.5.1",
+=======
+ "block2",
+>>>>>>> origin/renovate/egui-0.x
  "objc2 0.5.2",
  "objc2-core-location",
  "objc2-foundation 0.2.2",
@@ -2660,7 +2911,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "617fbf49e071c178c0b24c080767db52958f716d9eabdf0890523aeae54773ef"
 dependencies = [
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "block2 0.5.1",
+=======
+ "block2",
+>>>>>>> origin/renovate/egui-0.x
  "objc2 0.5.2",
  "objc2-foundation 0.2.2",
 ]
@@ -2726,7 +2981,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0ee638a5da3799329310ad4cfa62fbf045d5f56e3ef5ba4149e7452dcf89d5a8"
 dependencies = [
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "block2 0.5.1",
+=======
+ "block2",
+>>>>>>> origin/renovate/egui-0.x
  "dispatch",
  "libc",
  "objc2 0.5.2",
@@ -2739,8 +2998,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e3e0adef53c21f888deb4fa59fc59f7eb17404926ee8a6f59f5df0fd7f9f3272"
 dependencies = [
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "block2 0.6.2",
  "objc2 0.6.4",
+=======
+ "objc2 0.6.3",
+>>>>>>> origin/renovate/egui-0.x
  "objc2-core-foundation",
 ]
 
@@ -2751,7 +3014,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "180788110936d59bab6bd83b6060ffdfffb3b922ba1396b312ae795e1de9d81d"
 dependencies = [
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "objc2 0.6.4",
+=======
+ "objc2 0.6.3",
+>>>>>>> origin/renovate/egui-0.x
  "objc2-core-foundation",
 ]
 
@@ -2774,7 +3041,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dd0cba1276f6023976a406a14ffa85e1fdd19df6b0f737b063b95f6c8c7aadd6"
 dependencies = [
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "block2 0.5.1",
+=======
+ "block2",
+>>>>>>> origin/renovate/egui-0.x
  "objc2 0.5.2",
  "objc2-foundation 0.2.2",
 ]
@@ -2798,7 +3069,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e42bee7bff906b14b167da2bac5efe6b6a07e6f7c0a21a7308d40c960242dc7a"
 dependencies = [
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "block2 0.5.1",
+=======
+ "block2",
+>>>>>>> origin/renovate/egui-0.x
  "objc2 0.5.2",
  "objc2-foundation 0.2.2",
  "objc2-metal 0.2.2",
@@ -2835,7 +3110,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b8bb46798b20cd6b91cbd113524c490f1686f4c4e8f49502431415f3512e2b6f"
 dependencies = [
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "block2 0.5.1",
+=======
+ "block2",
+>>>>>>> origin/renovate/egui-0.x
  "objc2 0.5.2",
  "objc2-cloud-kit",
  "objc2-core-data",
@@ -2879,7 +3158,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "76cfcbf642358e8689af64cee815d139339f3ed8ad05103ed5eaf73db8d84cb3"
 dependencies = [
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "block2 0.5.1",
+=======
+ "block2",
+>>>>>>> origin/renovate/egui-0.x
  "objc2 0.5.2",
  "objc2-core-location",
  "objc2-foundation 0.2.2",
@@ -3177,12 +3460,15 @@ dependencies = [
 ]
 
 [[package]]
+<<<<<<< HEAD
 name = "pollster"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bc6355899e1c9462875b6757c79f3caa011a1fdae12bbb1a2e72dd1f234f8336"
 
 [[package]]
+=======
+>>>>>>> origin/renovate/egui-0.x
 name = "polycool"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3708,12 +3994,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2ab42ca02749e120097e328d91d415325bdf43b1c72c4c8badf37375fe40a813"
 
 [[package]]
+<<<<<<< HEAD
 name = "semver"
 version = "1.0.28"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8a7852d02fc848982e0c167ef163aaff9cd91dc640ba85e263cb1ce46fae51cd"
 
 [[package]]
+=======
+>>>>>>> origin/renovate/egui-0.x
 name = "serde"
 version = "1.0.228"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4335,7 +4624,11 @@ dependencies = [
  "log",
  "peniko",
  "smallvec",
+<<<<<<< HEAD
  "thiserror 2.0.20",
+=======
+ "thiserror 2.0.19",
+>>>>>>> origin/renovate/egui-0.x
 ]
 
 [[package]]
@@ -4383,9 +4676,15 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen"
+<<<<<<< HEAD
 version = "0.2.127"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1b70935747edd64d89de3efa29d73789b806c15798f8e7dca4d8ac356b50ce70"
+=======
+version = "0.2.126"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4b067c0c11094aef6b7a801c1e34a26affafdf3d051dba08456b868789aaf9a4"
+>>>>>>> origin/renovate/egui-0.x
 dependencies = [
  "cfg-if",
  "once_cell",
@@ -4396,9 +4695,15 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-futures"
+<<<<<<< HEAD
 version = "0.4.77"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6b7777d5cc23d0e91404e53ce2d5e8ec7acae3026b16233dba62cd3246457950"
+=======
+version = "0.4.76"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c62df1340f32221cb9c54d6a27b030e3dba64361d4a95bed55f9aacb44da291d"
+>>>>>>> origin/renovate/egui-0.x
 dependencies = [
  "js-sys",
  "wasm-bindgen",
@@ -4406,9 +4711,15 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-macro"
+<<<<<<< HEAD
 version = "0.2.127"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "77775f8f3f7217702089053b94958f8f54061a3f663417df76e19cbdcca29bc1"
+=======
+version = "0.2.126"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "167ce5e579f6bcf889c4f7175a8a5a585de84e8ff93976ce393efa5f2837aab1"
+>>>>>>> origin/renovate/egui-0.x
 dependencies = [
  "quote",
  "wasm-bindgen-macro-support",
@@ -4416,9 +4727,15 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-macro-support"
+<<<<<<< HEAD
 version = "0.2.127"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e11d33f857dc2fb11b8bc75aee111aa9cbeb12cd9f25efd3d4c2a3dd4e235284"
+=======
+version = "0.2.126"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f3997c7839262f4ef12cf90b818d6340c18e80f263f1a94bf157d0ec4420380e"
+>>>>>>> origin/renovate/egui-0.x
 dependencies = [
  "bumpalo",
  "proc-macro2",
@@ -4429,9 +4746,15 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-shared"
+<<<<<<< HEAD
 version = "0.2.127"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7ef64dbcc55df09c7e5a46182d181c2cfa3e925f3da937ea764728b4bbb9dcbf"
+=======
+version = "0.2.126"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dc1b4cb0cc549fcf58d7dfc081778139b3d283a081644e833e84682ad71cea24"
+>>>>>>> origin/renovate/egui-0.x
 dependencies = [
  "unicode-ident",
 ]
@@ -4573,9 +4896,15 @@ dependencies = [
 
 [[package]]
 name = "web-sys"
+<<<<<<< HEAD
 version = "0.3.104"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c435338968042f4f59a557f690a253676d47ce13ceb55d70100e7facf6620a30"
+=======
+version = "0.3.103"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8622dcb61c0bcc9fffa6938bed81210af2da9a7e4a1a834b2e37a59b6dfb6141"
+>>>>>>> origin/renovate/egui-0.x
 dependencies = [
  "js-sys",
  "wasm-bindgen",
@@ -4639,7 +4968,10 @@ checksum = "6d8f4bd44d92da5270f03409dba9f952dab24f128e05d6a554926101d1bf9114"
 dependencies = [
  "arrayvec",
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "bytemuck",
+=======
+>>>>>>> origin/renovate/egui-0.x
  "cfg-if",
  "cfg_aliases",
  "document-features",
@@ -4743,7 +5075,11 @@ dependencies = [
  "ash",
  "bit-set",
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "block2 0.6.2",
+=======
+ "block",
+>>>>>>> origin/renovate/egui-0.x
  "bytemuck",
  "cfg-if",
  "cfg_aliases",
@@ -5211,7 +5547,11 @@ dependencies = [
  "android-activity",
  "atomic-waker",
  "bitflags 2.13.1",
+<<<<<<< HEAD
  "block2 0.5.1",
+=======
+ "block2",
+>>>>>>> origin/renovate/egui-0.x
  "bytemuck",
  "calloop 0.13.0",
  "cfg_aliases",

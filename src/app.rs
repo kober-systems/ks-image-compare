@@ -16,39 +16,34 @@ pub struct App {
 }
 
 impl eframe::App for App {
-    fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
-        egui::CentralPanel::default().show(ctx, |mut ui| {
-            let width = ui.available_width();
-            let height = ui.available_height();
+    fn ui(&mut self, ui: &mut egui::Ui, _frame: &mut eframe::Frame) {
+        let width = ui.available_width();
+        let height = ui.available_height();
 
-            place_image(
-                &format!("original: {}", self.img1_path),
-                &self.img1,
-                egui::Pos2::new(0.0, 0.0),
-                width * 0.5,
-                height * 0.5,
-                &mut ui,
-                ctx,
-            );
-            place_image(
-                &format!("compared: {}", self.img2_path),
-                &self.img2,
-                egui::Pos2::new(width * 0.5, 0.0),
-                width * 0.5,
-                height * 0.5,
-                &mut ui,
-                ctx,
-            );
-            place_image(
-                "result",
-                &compare_images(&self.img1, &self.img2),
-                egui::Pos2::new(0.0, height * 0.5),
-                width,
-                height * 0.5,
-                &mut ui,
-                ctx,
-            );
-        });
+        place_image(
+            &format!("original: {}", self.img1_path),
+            &self.img1,
+            egui::Pos2::new(0.0, 0.0),
+            width * 0.5,
+            height * 0.5,
+            ui,
+        );
+        place_image(
+            &format!("compared: {}", self.img2_path),
+            &self.img2,
+            egui::Pos2::new(width * 0.5, 0.0),
+            width * 0.5,
+            height * 0.5,
+            ui,
+        );
+        place_image(
+            "result",
+            &compare_images(&self.img1, &self.img2),
+            egui::Pos2::new(0.0, height * 0.5),
+            width,
+            height * 0.5,
+            ui,
+        );
     }
 }
 
@@ -59,13 +54,18 @@ fn place_image(
     width: f32,
     height: f32,
     ui: &mut egui::Ui,
-    ctx: &egui::Context,
 ) -> egui::Response {
-    ui.allocate_ui_at_rect(
+    let ctx = ui.ctx().clone();
+    ui.allocate_rect(
         egui::Rect::from_min_size(pos, egui::vec2(width, height)),
-        |mut ui| {
+        egui::Sense::hover(),
+    );
+    ui.allocate_ui_with_layout(
+        egui::Vec2::new(width, height),
+        egui::Layout::top_down_justified(egui::Align::Center),
+        |ui| {
             ui.label(label);
-            show_dynamic_image(&img, width, height * 0.9, &mut ui, ctx);
+            show_dynamic_image(&img, width, height * 0.9, ui, &ctx);
         },
     )
     .response
@@ -79,23 +79,17 @@ fn show_dynamic_image(
     ctx: &egui::Context,
 ) -> egui::Response {
     match dynamic_image_to_egui(img) {
-        Ok(img) => {
-            ui.allocate_ui_with_layout(
-                egui::Vec2::new(width, height),
-                egui::Layout::top_down_justified(egui::Align::Center),
-                |ui| {
-                    ui.add(
-                        egui::Image::new(&ctx.load_texture(
-                            "result",
-                            img,
-                            egui::TextureOptions::default(),
-                        ))
-                        .max_width(width)
-                        .max_height(height),
-                    )
-                },
+        Ok(color_img) => {
+            let texture = ctx.load_texture(
+                "result",
+                color_img,
+                egui::TextureOptions::default(),
+            );
+            ui.add(
+                egui::Image::from_texture(&texture)
+                    .max_width(width)
+                    .max_height(height),
             )
-            .response
         }
         Err(e) => ui.label(e),
     }
